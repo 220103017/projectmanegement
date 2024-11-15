@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Mental Health App</title>
+</head>
+<body>
+  <header class="header-container">
+    <div class="logo-container">
+      <img src="assets/logo.png" alt="Mental Health Awareness Logo" class="logo-image">
+    </div>
+    <div class="button-container">
+      <button class="signup-button" onclick="location.href='signUp.html'">Sign Up</button>
+      <button class="login-button" onclick="location.href='signIn.html'">Sign In</button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <div class="main-content-container">
+      <div class="left-section">
+        <div class="search-history-container">
+          <h3 class="search-history-title">Search History</h3>
+          <div class="chat-list">
+            <p>No chat history yet.</p>
+          </div>
+          <button class="new-chat-button">+ New Chat</button>
+        </div>
+
+        <div class="notes-container">
+          <button class="notes-button" onclick="openNoteEditor()">Take a note</button>
+          <div class="notes-scroll">
+            <div class="notes-list">
+              <!-- Dynamically populated notes -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="center-section">
+        <div class="search-section-container">
+          <h2 class="search-title">You're not alone. Search for guidance, resources, and support!</h2>
+          <div class="search-bar-container">
+            <input class="search-input" type="text" placeholder="Tell me about your problems...">
+            <button class="search-button">Search</button>
+          </div>
+          <p class="ai-response">No response yet.</p>
+        </div>
+        <div class="chat-view-container">
+          <p>No messages yet.</p>
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="recommendations-container">
+          <div class="recommendation-item">
+            <h2 class="recommendations-title" onclick="toggleDetails('books')">Books</h2>
+            <div id="books" class="recommendation-details hidden">
+              <p>1. <i>The Power of Now</i> by Eckhart Tolle</p>
+              <p>2. <i>Lost Connections</i> by Johann Hari</p>
+              <p>3. <i>Atomic Habits</i> by James Clear</p>
+            </div>
+          </div>
+          <div class="recommendation-item">
+            <h2 class="recommendations-title" onclick="toggleDetails('podcasts')">Podcasts</h2>
+            <div id="podcasts" class="recommendation-details hidden">
+              <p>1. <i>On Being</i> with Krista Tippett</p>
+              <p>2. <i>The Happiness Lab</i> with Dr. Laurie Santos</p>
+              <p>3. <i>Feel Better, Live More</i> with Dr. Rangan Chatterjee</p>
+            </div>
+          </div>
+          <div class="recommendation-item">
+            <h2 class="recommendations-title" onclick="toggleDetails('meditation')">Meditation</h2>
+            <div id="meditation" class="recommendation-details hidden">
+              <p>1. Headspace</p>
+              <p>2. Insight Timer</p>
+              <p>3. Calm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

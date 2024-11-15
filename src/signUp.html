@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Sign Up</h2>
+    <p id="error-message" class="error-message" style="display: none;">Error message here</p>
+    <input type="email" id="email" placeholder="Email" />
+    <div class="password-toggle">
+      <input type="password" id="password" placeholder="Password" />
+      <span id="toggle-icon" class="toggle-icon">👁️</span>
+    </div>
+    <div class="password-toggle">
+      <input type="password" id="confirm-password" placeholder="Confirm Password" />
+      <span id="confirm-toggle-icon" class="toggle-icon">👁️</span>
+    </div>
+    <button onclick="handleSignUp()">Sign Up</button>
+    <p onclick="closeAuth()" class="auth-close">Cancel</p>
+  </div>
+
+  <script>
+    let showPassword = false;
+
+    const toggleIcon = document.getElementById('toggle-icon');
+    const confirmToggleIcon = document.getElementById('confirm-toggle-icon');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
+
+    toggleIcon.addEventListener('click', () => {
+      showPassword = !showPassword;
+      passwordInput.type = showPassword ? 'text' : 'password';
+      toggleIcon.textContent = showPassword ? '🙈' : '👁️';
+    });
+
+    confirmToggleIcon.addEventListener('click', () => {
+      showPassword = !showPassword;
+      confirmPasswordInput.type = showPassword ? 'text' : 'password';
+      confirmToggleIcon.textContent = showPassword ? '🙈' : '👁️';
+    });
+
+    function handleSignUp() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      const errorMessage = document.getElementById('error-message');
+
+      if (!email || !password || !confirmPassword) {
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = 'Please fill out all fields.';
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = 'Please enter a valid email address.';
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = "Passwords don't match.";
+        return;
+      }
+
+      errorMessage.style.display = 'none';
+      alert(`Signed up with Email: ${email}`);
+    }
+
+    function closeAuth() {
+      window.history.back()
+    }
+  </script>
+</body>
+</html>
